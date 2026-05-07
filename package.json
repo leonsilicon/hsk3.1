@@ -1,0 +1,149 @@
+{
+  "name": "@leonsilicon/hsk3.1",
+  "version": "0.0.0",
+  "description": "JSON package for the HSK 3.1 vocabulary and character lists.",
+  "homepage": "https://github.com/leonsilicon/hsk3.1#readme",
+  "bugs": {
+    "url": "https://github.com/leonsilicon/hsk3.1/issues"
+  },
+  "author": "leonsilicon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonsilicon/hsk3.1.git"
+  },
+  "keywords": [
+    "hsk",
+    "hsk3.1",
+    "hsk-3.1",
+    "chinese",
+    "mandarin",
+    "vocabulary",
+    "characters",
+    "linguistics",
+    "nlp",
+    "dataset",
+    "zh"
+  ],
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "HSK3.1_*.json",
+    "HSK3.1_*.json.d.ts",
+    "README.md"
+  ],
+  "type": "module",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "default": "./index.js"
+    },
+    "./HSK3.1_4char_phrases.json": {
+      "types": "./HSK3.1_4char_phrases.json.d.ts",
+      "default": "./HSK3.1_4char_phrases.json"
+    },
+    "./HSK3.1_chars.json": {
+      "types": "./HSK3.1_chars.json.d.ts",
+      "default": "./HSK3.1_chars.json"
+    },
+    "./HSK3.1_chars_level1.json": {
+      "types": "./HSK3.1_chars_level1.json.d.ts",
+      "default": "./HSK3.1_chars_level1.json"
+    },
+    "./HSK3.1_chars_level2.json": {
+      "types": "./HSK3.1_chars_level2.json.d.ts",
+      "default": "./HSK3.1_chars_level2.json"
+    },
+    "./HSK3.1_chars_level3.json": {
+      "types": "./HSK3.1_chars_level3.json.d.ts",
+      "default": "./HSK3.1_chars_level3.json"
+    },
+    "./HSK3.1_chars_level4.json": {
+      "types": "./HSK3.1_chars_level4.json.d.ts",
+      "default": "./HSK3.1_chars_level4.json"
+    },
+    "./HSK3.1_chars_level5.json": {
+      "types": "./HSK3.1_chars_level5.json.d.ts",
+      "default": "./HSK3.1_chars_level5.json"
+    },
+    "./HSK3.1_chars_level6.json": {
+      "types": "./HSK3.1_chars_level6.json.d.ts",
+      "default": "./HSK3.1_chars_level6.json"
+    },
+    "./HSK3.1_chars_level7-9.json": {
+      "types": "./HSK3.1_chars_level7-9.json.d.ts",
+      "default": "./HSK3.1_chars_level7-9.json"
+    },
+    "./HSK3.1_chars_original.json": {
+      "types": "./HSK3.1_chars_original.json.d.ts",
+      "default": "./HSK3.1_chars_original.json"
+    },
+    "./HSK3.1_chengyu.json": {
+      "types": "./HSK3.1_chengyu.json.d.ts",
+      "default": "./HSK3.1_chengyu.json"
+    },
+    "./HSK3.1_export.json": {
+      "types": "./HSK3.1_export.json.d.ts",
+      "default": "./HSK3.1_export.json"
+    },
+    "./HSK3.1_not_chengyu.json": {
+      "types": "./HSK3.1_not_chengyu.json.d.ts",
+      "default": "./HSK3.1_not_chengyu.json"
+    },
+    "./HSK3.1_words.json": {
+      "types": "./HSK3.1_words.json.d.ts",
+      "default": "./HSK3.1_words.json"
+    },
+    "./HSK3.1_words_level1.json": {
+      "types": "./HSK3.1_words_level1.json.d.ts",
+      "default": "./HSK3.1_words_level1.json"
+    },
+    "./HSK3.1_words_level2.json": {
+      "types": "./HSK3.1_words_level2.json.d.ts",
+      "default": "./HSK3.1_words_level2.json"
+    },
+    "./HSK3.1_words_level3.json": {
+      "types": "./HSK3.1_words_level3.json.d.ts",
+      "default": "./HSK3.1_words_level3.json"
+    },
+    "./HSK3.1_words_level4.json": {
+      "types": "./HSK3.1_words_level4.json.d.ts",
+      "default": "./HSK3.1_words_level4.json"
+    },
+    "./HSK3.1_words_level5.json": {
+      "types": "./HSK3.1_words_level5.json.d.ts",
+      "default": "./HSK3.1_words_level5.json"
+    },
+    "./HSK3.1_words_level6.json": {
+      "types": "./HSK3.1_words_level6.json.d.ts",
+      "default": "./HSK3.1_words_level6.json"
+    },
+    "./HSK3.1_words_level7-9.json": {
+      "types": "./HSK3.1_words_level7-9.json.d.ts",
+      "default": "./HSK3.1_words_level7-9.json"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "bun scripts/build.ts",
+    "check": "node --check index.js",
+    "prepack": "bun run build",
+    "prepublishOnly": "bun run build"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@typescript/native-preview": "7.0.0-dev.20260328.1",
+    "bumpp": "^11.0.1",
+    "typescript": "^6.0.2",
+    "vite-plus": "^0.1.14"
+  },
+  "overrides": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+  },
+  "packageManager": "bun@1.3.13"
+}
