@@ -10,7 +10,11 @@
  */
 export type Hsk31Entry = string | string[];
 
-export type Hsk31List = Hsk31Entry[];
+/** A list with no optional-segment entries — every item is a plain string. */
+export type Hsk31List = string[];
+
+/** A list that may contain expanded entries: `words` levels 1, 2, 4, 5 and 6. */
+export type Hsk31EntryList = Hsk31Entry[];
 
 export interface Hsk31ExportFileSummary {
   name: string;
@@ -40,12 +44,12 @@ export interface Hsk31Dataset {
   chengyu: Hsk31List;
   notChengyu: Hsk31List;
   words: Hsk31List;
-  wordsLevel1: Hsk31List;
-  wordsLevel2: Hsk31List;
+  wordsLevel1: Hsk31EntryList;
+  wordsLevel2: Hsk31EntryList;
   wordsLevel3: Hsk31List;
-  wordsLevel4: Hsk31List;
-  wordsLevel5: Hsk31List;
-  wordsLevel6: Hsk31List;
+  wordsLevel4: Hsk31EntryList;
+  wordsLevel5: Hsk31EntryList;
+  wordsLevel6: Hsk31EntryList;
   wordsLevel7to9: Hsk31List;
 }
 
@@ -63,12 +67,12 @@ export declare const hsk314CharPhrases: Hsk31List;
 export declare const hsk31Chengyu: Hsk31List;
 export declare const hsk31NotChengyu: Hsk31List;
 export declare const hsk31Words: Hsk31List;
-export declare const hsk31WordsLevel1: Hsk31List;
-export declare const hsk31WordsLevel2: Hsk31List;
+export declare const hsk31WordsLevel1: Hsk31EntryList;
+export declare const hsk31WordsLevel2: Hsk31EntryList;
 export declare const hsk31WordsLevel3: Hsk31List;
-export declare const hsk31WordsLevel4: Hsk31List;
-export declare const hsk31WordsLevel5: Hsk31List;
-export declare const hsk31WordsLevel6: Hsk31List;
+export declare const hsk31WordsLevel4: Hsk31EntryList;
+export declare const hsk31WordsLevel5: Hsk31EntryList;
+export declare const hsk31WordsLevel6: Hsk31EntryList;
 export declare const hsk31WordsLevel7to9: Hsk31List;
 
 declare const hsk31: Hsk31Dataset;

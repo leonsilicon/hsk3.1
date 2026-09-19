@@ -41,7 +41,9 @@ Six entries are tuples, all in the `words` lists:
 | `要不（然）` | `["要不", "要不然"]` | 5 |
 | `凡（是）` | `["凡", "凡是"]` | 6 |
 
-Every list is therefore `(string | string[])[]`. To flatten to all accepted forms, or to pick a
+Only those five lists are typed `(string | string[])[]`; every other list, including
+`HSK3.1_words_level3.json` and `HSK3.1_words_level7-9.json`, stays a plain `string[]`, so you
+only narrow where a tuple can actually appear. To flatten to all accepted forms, or to pick a
 single canonical one:
 
 ```js

@@ -61,7 +61,11 @@ function parseTxt(content: string): Hsk31Entry[] {
     .map((line) => expandEntry(line));
 }
 
-function typeDefinitionForJson(fileName: string): string {
+/**
+ * Only the lists that actually contain an expanded entry are typed as possibly-tuple; the rest stay
+ * `string[]` so consumers aren't forced to narrow a case their file can never contain.
+ */
+function typeDefinitionForJson(fileName: string, data: unknown): string {
   if (fileName === "HSK3.1_export.json") {
     return `export interface Hsk31ExportFileSummary {
   name: string;
@@ -81,7 +85,10 @@ export default data;
 `;
   }
 
-  return `declare const data: (string | string[])[];
+  const hasExpandedEntry = Array.isArray(data) && data.some((entry) => Array.isArray(entry));
+  const elementType = hasExpandedEntry ? "string | string[]" : "string";
+
+  return `declare const data: ${hasExpandedEntry ? `(${elementType})[]` : `${elementType}[]`};
 export default data;
 `;
 }
@@ -112,7 +119,7 @@ async function buildFile(fileName: string): Promise<void> {
   const outputFileName = basename(outputPath);
 
   await writeFile(outputPath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
-  await writeFile(`${outputPath}.d.ts`, typeDefinitionForJson(outputFileName), "utf8");
+  await writeFile(`${outputPath}.d.ts`, typeDefinitionForJson(outputFileName, data), "utf8");
   console.log(`Wrote ${basename(outputPath)} from ${fileName}`);
 }
 
