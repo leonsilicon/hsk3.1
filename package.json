@@ -1,6 +1,6 @@
 {
   "name": "@leonsilicon/hsk3.1",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "JSON package for the HSK 3.1 vocabulary and character lists.",
   "homepage": "https://github.com/leonsilicon/hsk3.1#readme",
   "bugs": {

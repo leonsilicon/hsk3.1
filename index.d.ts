@@ -1,4 +1,16 @@
-export type Hsk31List = string[];
+/**
+ * A single list entry.
+ *
+ * Usually the word or character itself. When the official syllabus marks part of a word as
+ * optional with fullwidth parentheses — `没（有）`, `有（一）点儿` — the entry is instead the
+ * tuple of its accepted forms, shortest first: `["没", "没有"]`, `["有点儿", "有一点儿"]`.
+ *
+ * Six entries are tuples, all in the `words` lists: `没（有）` and `有（一）点儿` (level 1),
+ * `有时（候）` (2), `差（一）点儿` (4), `要不（然）` (5) and `凡（是）` (6).
+ */
+export type Hsk31Entry = string | string[];
+
+export type Hsk31List = Hsk31Entry[];
 
 export interface Hsk31ExportFileSummary {
   name: string;

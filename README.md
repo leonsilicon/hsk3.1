@@ -16,6 +16,45 @@ Exports [https://github.com/becky82/mteh/tree/main/sources/HSK3.1] as JSON files
 - `HSK3.1_not_chengyu.json`: four-character phrases that are not chengyu
 - `HSK3.1_export.json`: manifest with source file metadata and hashes
 
+## Optional Word Segments
+
+The official syllabus marks an optional part of a word with fullwidth parentheses — `没（有）`
+means "没 or 没有", `有（一）点儿` means "有点儿 or 有一点儿".
+
+The `data/` sources keep that notation verbatim, but the published JSON does **not**: such an
+entry is emitted as a tuple of its accepted forms, shortest first, so consumers never have to
+parse `（）` out of a string (and never mistake `（` for a Chinese character).
+
+```js
+hsk31WordsLevel1.includes("没（有）"); // false — no parentheses are published
+// the entry is ["没", "没有"]
+```
+
+Six entries are tuples, all in the `words` lists:
+
+| Syllabus notation | Published entry | Level |
+| --- | --- | --- |
+| `没（有）` | `["没", "没有"]` | 1 |
+| `有（一）点儿` | `["有点儿", "有一点儿"]` | 1 |
+| `有时（候）` | `["有时", "有时候"]` | 2 |
+| `差（一）点儿` | `["差点儿", "差一点儿"]` | 4 |
+| `要不（然）` | `["要不", "要不然"]` | 5 |
+| `凡（是）` | `["凡", "凡是"]` | 6 |
+
+Every list is therefore `(string | string[])[]`. To flatten to all accepted forms, or to pick a
+single canonical one:
+
+```js
+const allForms = hsk31WordsLevel1.flat();
+const canonical = hsk31WordsLevel1.map((entry) =>
+  Array.isArray(entry) ? entry.at(-1) : entry,
+);
+```
+
+Note `HSK3.1_words.json` (the combined pinyin-sorted list) contains no tuples: the syllabus
+already resolves each of these to one form there, though not consistently the same side — it
+lists `没有` and `凡是` but `有点儿` and `有时`.
+
 ## Install
 
 ```bash
